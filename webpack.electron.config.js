@@ -434,9 +434,17 @@ module.exports = {
       "hostReplacementPaths": {
         "environments\\environment.ts": "environments\\environment.ts"
       },
-      "exclude": ["node_modules"],
+      "exclude": [],
       "tsConfigPath": "src\\tsconfig.app.json",
       "skipCodeGeneration": true
+    }),
+    new ElectronPlugin({
+      test: /^.\/src\//,
+      path: "./main.js",
+      args: ["--enable-logging"],
+      options: {
+        env: {NODE_ENV: "development"}
+      }
     })
   ],
   "node": {
